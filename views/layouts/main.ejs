@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title || "Book Tracker" %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <% if (currentUser) { %>
+                | <a href="/books">My Books</a>
+                | <a href="/books/new">Add Book</a>
+                | <form action="/auth/logout" method="POST" style="display: inline;">
+                    <button type="submit" class="link-button">Logout</button>
+                </form>
+            <% } else { %>
+                | <a href="/auth/login">Login</a> 
+                | <a href="/auth/register">Register</a> 
+            <% } %>
+        </nav>
+    </header>
+
+    <main>
+        <%- body %>
+    </main>
+    <footer>&copy; 2025 Book Tracker by Roger</footer>
+</body>
+</html>

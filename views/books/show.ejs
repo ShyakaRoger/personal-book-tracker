@@ -1,0 +1,15 @@
+<h1><%= book.title %></h1>
+<p><strong>Author:</strong> <%= book.author %></p>
+<p><strong>Status:</strong> <%= book.status %></p>
+<p><strong>Description:</strong></p>
+<div class="description-box">
+  <%= book.description || 'No description provided.' %>
+</div>
+
+<div class="actions">
+  <a href="/books/<%= book._id %>/edit" class="btn">Edit</a>
+  <form action="/books/<%= book._id %>?_method=DELETE" method="POST" style="display:inline;">
+    <button type="submit" class="btn danger">Delete</button>
+  </form>
+  <a href="/books" class="btn">Back to My Books</a>
+</div>

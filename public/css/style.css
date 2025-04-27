@@ -1,0 +1,111 @@
+/* Import a beautiful display font */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+
+/* Base Reset and Typography */
+body {
+  margin: 0;
+  padding: 3rem 3rem; /* Increased side padding for better margins */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #000000;
+  background: url('https://images.unsplash.com/photo-1625053376622-e462848c453f?q=80&w=1744&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+  background-size: cover;
+  box-sizing: border-box;
+}
+
+/* Lighter overlay for better visibility */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(255, 255, 255, 0.5); /* Less opaque for more visible background */
+  z-index: -1;
+}
+
+/* Page Container */
+.container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+/* App Title */
+h1, .app-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  text-align: center;
+  color: #082632;
+  margin: 1.5rem 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  background-color: #112a55;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+button, .btn {
+  background-color: #097266;
+  color: #ffffff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0.5rem 0.5rem;
+}
+
+/* Forms */
+form label {
+  display: block;
+  margin: 0.5rem 0 0.2rem;
+  font-weight: bold;
+}
+
+form input, form textarea, form select {
+  width: 40%;
+  padding: 0.75rem;
+  margin-bottom: 1.25rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+input[readonly] {
+  background-color: #f0f0f0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Utility */
+.hidden {
+  display: none !important;
+}

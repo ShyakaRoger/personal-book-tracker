@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof title !== 'undefined' ? title : 'Book Tracker' %></title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Book Tracker</h1>
+    <nav>
+      <% if (typeof user !== 'undefined' && user) { %>
+        <a href="/books">My Books</a>
+        <a href="/books/new">Add Book</a>
+        <span>Welcome, <%= user.username %></span>
+        <a href="/logout">Logout</a>
+      <% } else { %>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+      <% } %>
+    </nav>
+  </header>
+
+  <main>
+      <p>Track your reading progress with our simple book tracker!</p>
+      <% if (user) { %>
+          <p>Welcome back, <%= user.username %>!</p>
+      <% } else { %>
+          <p>Please login or register to start tracking your books.</p>
+      <% } %>
+  </main>
+
+  <footer>
+  </footer>
+</body>
+</html>
