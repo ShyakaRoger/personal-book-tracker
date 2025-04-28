@@ -1,4 +1,4 @@
-![Book app screenshot](<Screenshot 2025-04-28 at 3.38.38 AM.png>)
+![Book app screenshot](<Screenshot 2025-04-28 at 4.10.21 AM.png>)
 
 # personal-book-tracker
 
