@@ -1,3 +1,4 @@
+<!-- views/auth/login.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,17 +6,17 @@
     <title>Login</title>
 </head>
 <body>
-   <h1>Login</h1>
+    <h1 style="text-align:center;">Login</h1>
     <% if (error) { %>
         <div class="error"><%= error %></div>
     <% } %>
     <form action="/auth/login" method="POST">
         <div>
-            <label for="usernameOrEmail">Username or Email:</label>
+            <label for="username">Username:</label>
             <input 
                 type="text" 
-                id="usernameOrEmail" 
-                name="usernameOrEmail" 
+                id="username" 
+                name="username" 
                 value="<%= typeof username !== 'undefined' ? username : '' %>" 
                 required>
         </div>
@@ -30,6 +31,5 @@
         <button type="submit">Login</button>
     </form>
     <p>Don't have an account? <a href="/auth/register">Register here</a></p>
-
 </body>
 </html>

@@ -1,8 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<!-- views/partials/header.ejs -->
+<header class="header-container">
+    <a href="/">
+        <img src="public/images/Chapters.png" alt="Book Tracker Logo" class="logo">
+    </a>
+    
+    <div class="nav-links">
+        <% if (user) { %>
+            <a href="/books">My Books</a>
+            <a href="/auth/logout">Logout</a>
+        <% } else { %>
+            <a href="/auth/login">Login</a>
+            <a href="/auth/register">Register</a>
+        <% } %>
+    </div>
+</header>
