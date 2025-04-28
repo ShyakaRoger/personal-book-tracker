@@ -3,7 +3,7 @@ const router = express.Router();
 const booksController = require('../controllers/books');
 const isLoggedIn = require('../middleware/isLoggedIn');
 
-// non changing routes First
+// Static or specific routes FIRST
 router.get('/', isLoggedIn, booksController.listBooks);
 router.get('/new', isLoggedIn, booksController.newBookForm);
 router.get('/status/:status', isLoggedIn, booksController.getBooksByStatus);

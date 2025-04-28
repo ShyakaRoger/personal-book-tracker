@@ -1,17 +1,21 @@
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config();
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const expressLayouts = require('express-ejs-layouts');
+const passUserToView = require('./middleware/passUserToView');
 const path = require('path');
 
 const app = express();
 
+const PORT = process.env.PORT || 3000;
+
 // Database connection to MongoDB
 mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on('connected', () => {
-  console.log(`Connected to MongoDB: ${mongoose.connection.name}`);
+  console.log(`Connected to ${mongoose.connection.name}`);
 });
 mongoose.connection.on('error', (err) => {
   console.error('MongoDB connection error:', err);
@@ -20,11 +24,13 @@ mongoose.connection.on('error', (err) => {
 // Session configuration
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || 'fallback-secret-key',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
   })
 );
+
+app.use(passUserToView);
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -72,7 +78,6 @@ app.use((err, req, res, next) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`app running on port ${PORT}`);
 });
