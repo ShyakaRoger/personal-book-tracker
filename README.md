@@ -13,7 +13,7 @@
 
 ### Getting started
 
-on this link(github link) users will be directed to the home page of the app, where they will be required to register or create an account and login to access the full functionality of the app.
+on this link(Heroku link) users will be directed to the home page of the app, where they will be required to register or create an account and login to access the full functionality of the app.
 
 ## Technologies Used
 
