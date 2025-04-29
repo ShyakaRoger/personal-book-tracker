@@ -13,7 +13,7 @@
 
 ### Getting started
 
-on this link(Heroku link) users will be directed to the home page of the app, where they will be required to register or create an account and login to access the full functionality of the app.
+on this link(https://personal-book-tracker-8162d802d7c2.herokuapp.com/) users will be directed to the home page of the app, where they will be required to register or create an account and login to access the full functionality of the app.
 
 ## Technologies Used
 
