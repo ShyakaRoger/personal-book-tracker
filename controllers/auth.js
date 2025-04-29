@@ -1,4 +1,3 @@
-
 const User = require('../models/User');  
 const bcrypt = require('bcrypt');
 
@@ -36,7 +35,8 @@ module.exports = {
 
             req.session.user = {
                 id: user._id,
-                username: user.username
+                username: user.username,
+                email: user.email
             };
 
             res.redirect('/books');
@@ -54,44 +54,69 @@ module.exports = {
     getRegister: (req, res) => {
         res.render('auth/register', {
             error: null,
-            username: ''
+            username: '',
+            email: ''
         });
     },
 
     // POST REGISTER
     postRegister: async (req, res) => {
-        const { username, password, confirmPassword } = req.body;
+        const { username, email, password, confirmPassword } = req.body;
 
         try {
+            // Validation
+            if (!email) {
+                return res.render('auth/register', {
+                    error: 'Email is required',
+                    username,
+                    email
+                });
+            }
+
             if (password !== confirmPassword) {
                 return res.render('auth/register', {
                     error: 'Passwords do not match',
-                    username
+                    username,
+                    email
                 });
             }
 
-            const existingUser = await User.findOne({ username });
+            // Check for existing username or email
+            const existingUser = await User.findOne({ $or: [{ username }, { email }] });
             if (existingUser) {
+                let error = 'Username already exists';
+                if (existingUser.email === email) {
+                    error = 'Email already exists';
+                }
                 return res.render('auth/register', {
-                    error: 'Username already exists',
-                    username
+                    error,
+                    username,
+                    email
                 });
             }
 
-            const user = new User({ username, password });
+            const user = new User({ username, email, password });
             await user.save();
 
             req.session.user = {
                 id: user._id,
-                username: user.username
+                username: user.username,
+                email: user.email
             };
             res.redirect('/books');
 
         } catch (err) {
             console.error('Registration error:', err);
+            let errorMessage = 'Registration failed. Please try again.';
+            
+            if (err.code === 11000) {
+                errorMessage = 'Email already exists';
+            }
+
             res.render('auth/register', {
-                error: 'Registration failed. Please try again.',
-                username
+                error: errorMessage,
+                username,
+                email
             });
         }
     },

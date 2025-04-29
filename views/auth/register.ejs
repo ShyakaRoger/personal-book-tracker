@@ -1,8 +1,8 @@
-<!-- views/auth/register.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
 </head>
 <body>
@@ -19,6 +19,16 @@
                 id="username" 
                 name="username" 
                 value="<%= typeof username !== 'undefined' ? username : '' %>" 
+                required
+                minlength="3">
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                value="<%= typeof email !== 'undefined' ? email : '' %>" 
                 required>
         </div>
         <div>
@@ -27,7 +37,8 @@
                 type="password" 
                 id="password" 
                 name="password" 
-                required>
+                required
+                minlength="6">
         </div>
         <div>
             <label for="confirmPassword">Confirm Password:</label>
@@ -35,7 +46,8 @@
                 type="password" 
                 id="confirmPassword" 
                 name="confirmPassword" 
-                required>
+                required
+                minlength="6">
         </div>
         <button type="submit">Register</button>
     </form>
